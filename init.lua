@@ -899,21 +899,23 @@ require('lazy').setup({
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
     -- 'folke/tokyonight.nvim',
-    'sainnhe/everforest',
+    'navarasu/onedark.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     config = function()
       ---@diagnostic disable-next-line: missing-fields
-      --require('sainnhe/everforest').setup {
-      --  styles = {
-      --    comments = { italic = false }, -- Disable italics in comments
-      --  },
-      --}
+      require('onedark').setup {
+        style = 'dark',
+        code_style = {
+          comments = 'none',
+        },
+      }
+      require('onedark').load()
 
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
       -- vim.cmd.colorscheme 'tokyonight-night'
-      vim.cmd.colorscheme 'everforest'
+      -- vim.cmd.colorscheme 'onedark'
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
