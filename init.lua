@@ -84,6 +84,18 @@ I hope you enjoy your Neovim journey,
 P.S. You can delete this when you're done too. It's your config now! :)
 --]]
 
+-- Add custom filetypes
+vim.filetype.add {
+  extension = {
+    hlsl = 'hlsl',
+    ['vert.hlsl'] = 'hlsl',
+    ['frag.hlsl'] = 'hlsl',
+  },
+}
+
+-- Temporary solution: https://github.com/neovim/neovim/issues/31675
+vim.hl = vim.highlight
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -210,9 +222,6 @@ vim.keymap.set('n', '<leader>wh', '<Cmd>split<CR>', { desc = 'Horizontal split w
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
-
--- [[ Basic Autocommands ]]
---  See `:help lua-guide-autocommands`
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
@@ -968,7 +977,7 @@ require('lazy').setup({
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'odin', 'query', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'diff', 'glsl', 'hlsl', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'odin', 'query', 'vim', 'vimdoc' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
